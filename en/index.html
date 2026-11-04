@@ -240,16 +240,25 @@ nav.links a:hover{color:var(--ink)}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
 }
 @media (max-width:379px){.hero .cta-row{flex-wrap:wrap}.hero .cta-row .btn{flex:1 1 100%}}
-/* Počítač a tablet: fotka cez celú obrazovku, menší text vľavo dole, stmavenie len pod textom */
+/* Panel s údajmi: na mobile tlačidlá nad údajmi */
+.glass{display:flex;flex-direction:column}
+.glass .cta-row{order:-1}
+/* Počítač a tablet: celá fotka, nadpis a pod ním priehľadný sklenený panel s údajmi a tlačidlom */
 @media (min-width:641px){
-  .hero::before{background:linear-gradient(90deg,rgba(9,12,17,.72) 0%,rgba(9,12,17,.38) 30%,rgba(9,12,17,0) 52%),
-    linear-gradient(180deg,rgba(9,12,17,.45) 0%,rgba(9,12,17,0) 16%,rgba(9,12,17,0) 62%,rgba(9,12,17,.8) 100%)}
-  .hero .claim{font-size:clamp(2.4rem,4.4vw,4.2rem);max-width:none}
-  .hero .kicker{font-size:1.05rem}
-  .hero .sub{max-width:40ch;font-size:1.02rem}
-  .hero .eyebrow,.hero h1,.hero .sub,.hero .cta-row{max-width:600px}
-  .facts{margin-top:40px}
+  .hero::before{background:linear-gradient(180deg,rgba(9,12,17,.45) 0%,rgba(9,12,17,0) 16%,rgba(9,12,17,0) 50%,rgba(9,12,17,.55) 100%)}
+  .hero::after{content:"";position:absolute;left:0;top:28%;width:62%;height:52%;z-index:-1;pointer-events:none;
+    background:radial-gradient(ellipse at 22% 60%,rgba(9,12,17,.5),rgba(9,12,17,0) 70%)}
+  .hero .claim{font-size:clamp(2.6rem,4.6vw,4.4rem);max-width:none}
+  .hero .sub{display:none}
+  .glass{flex-direction:row;align-items:center;gap:32px;margin-top:32px;padding:18px 24px;border-radius:8px;
+    border:1px solid rgba(255,255,255,.26);background:rgba(12,16,22,.14);
+    -webkit-backdrop-filter:blur(6px) saturate(1.15);backdrop-filter:blur(6px) saturate(1.15)}
+  .glass .cta-row{order:0;margin:0;flex-wrap:nowrap}
+  .glass .btn.outline{display:none}
+  .glass .facts{flex:1;margin:0;padding:0;border:0}
+  .glass .facts small{color:rgba(255,255,255,.82)}
 }
+@media (min-width:641px) and (max-width:900px){.glass .facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (orientation:landscape) and (max-height:560px){.hero-in{padding-top:84px}.hero .claim{font-size:clamp(2.2rem,7vw,3.6rem)}.facts{margin-top:20px}}
 @media (prefers-reduced-motion:no-preference){
   .hero-bg img{animation:kb 18s cubic-bezier(.2,.6,.2,1) both}
@@ -535,16 +544,18 @@ section{scroll-margin-top:64px}
 <p class="eyebrow">For rent · Available now</p>
 <h1><span class="kicker">One-bedroom apartment for rent in Považská Bystrica</span> <span class="claim">Two-bedroom space.</span></h1>
 <p class="sub">The new Panoráma Rozkvet residence, a five-minute walk from the town centre. Furnished, with a terrace, a balcony and a garage space included.</p>
-<div class="cta-row">
-<a class="btn lux" href="#kontakt">Book a viewing</a>
-<a class="btn outline" href="#miestnosti">See the photos</a>
-</div>
+<div class="glass">
 <ul class="facts">
 <li><b>86 m²</b><small>with terrace and balcony</small></li>
 <li><b>11 m²</b><small>covered terrace</small></li>
 <li><b>Garage</b><small>included in the rent</small></li>
 <li><b>€910</b><small>per month + utilities</small></li>
 </ul>
+<div class="cta-row">
+<a class="btn lux" href="#kontakt">Book a viewing</a>
+<a class="btn outline" href="#miestnosti">See the photos</a>
+</div>
+</div>
 </div>
 </div>
 <div class="wrap">
