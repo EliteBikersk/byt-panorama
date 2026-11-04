@@ -209,7 +209,6 @@ nav.links a:hover{color:var(--ink)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:linear-gradient(90deg,rgba(9,12,17,.55) 0%,rgba(9,12,17,.2) 45%,rgba(9,12,17,0) 70%),
     linear-gradient(180deg,rgba(9,12,17,.6) 0%,rgba(9,12,17,.18) 18%,rgba(9,12,17,.3) 40%,rgba(9,12,17,.78) 66%,rgba(9,12,17,.95) 100%)}
-@media (max-width:640px){.hero::before{background:linear-gradient(180deg,rgba(9,12,17,.55) 0%,rgba(9,12,17,.15) 16%,rgba(9,12,17,.48) 36%,rgba(9,12,17,.84) 58%,rgba(9,12,17,.96) 100%)}}
 .hero-in{text-shadow:0 1px 20px rgba(0,0,0,.28)}
 .hero-in{width:100%;max-width:1160px;margin:0 auto;
   padding:120px max(16px,env(safe-area-inset-right,0px)) clamp(28px,5vh,52px) max(16px,env(safe-area-inset-left,0px))}
@@ -225,7 +224,22 @@ nav.links a:hover{color:var(--ink)}
 .facts li{min-width:0}
 .facts b{display:block;font-family:var(--display);font-stretch:118%;font-weight:620;font-size:clamp(1.3rem,2.3vw,2rem);line-height:1.1;font-variant-numeric:tabular-nums;white-space:nowrap}
 .facts small{display:block;margin-top:5px;font-size:.84rem;line-height:1.35;color:rgba(255,255,255,.7)}
-@media (max-width:640px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .sub{margin-top:18px}.hero .cta-row{margin-top:24px}}
+/* Mobil: svetlá fotka hore bez textu, nadpis a údaje na tmavom pod ňou */
+@media (max-width:640px){
+  .hero{display:block;min-height:0}
+  .hero-bg{position:relative;inset:auto;height:64vh;height:64svh;min-height:380px;max-height:640px;overflow:hidden}
+  .hero-bg img{object-position:45% 42%}
+  .hero::before{bottom:auto;height:64vh;height:64svh;min-height:380px;max-height:640px;
+    background:linear-gradient(180deg,rgba(9,12,17,.55) 0%,rgba(9,12,17,0) 16%,rgba(9,12,17,0) 60%,rgba(9,12,17,.7) 86%,#0E1319 100%)}
+  .hero-in{position:relative;margin-top:-96px;padding-top:0;padding-bottom:36px}
+  .hero .eyebrow{margin-bottom:12px}
+  .hero .claim{font-size:clamp(2.5rem,11.5vw,3.4rem)}
+  .hero .sub{display:none}
+  .hero .cta-row{margin-top:24px;flex-wrap:nowrap}
+  .hero .cta-row .btn{flex:1 1 0;min-width:0;padding:0 10px;font-size:.95rem}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
+}
+@media (max-width:379px){.hero .cta-row{flex-wrap:wrap}.hero .cta-row .btn{flex:1 1 100%}}
 @media (orientation:landscape) and (max-height:560px){.hero-in{padding-top:84px}.hero .claim{font-size:clamp(2.2rem,7vw,3.6rem)}.facts{margin-top:20px}}
 @media (prefers-reduced-motion:no-preference){
   .hero-bg img{animation:kb 18s cubic-bezier(.2,.6,.2,1) both}
@@ -256,6 +270,7 @@ nav.links a:hover{color:var(--ink)}
 .btn.line{border:1.5px solid rgba(255,255,255,.72);color:#fff}
 .btn.line:hover{border-color:#fff;background:rgba(255,255,255,.1);color:#fff}
 @media (max-width:400px){.cta-row .btn{flex:1 1 100%}}
+@media (min-width:641px){.btn{white-space:nowrap}}
 
 /* Nadpisy sekcií s poradovým číslom */
 .eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-size:.76rem;font-weight:650;letter-spacing:.16em;text-transform:uppercase;color:var(--oak-ink)}
@@ -501,7 +516,7 @@ section{scroll-margin-top:64px}
 <div class="hero-bg"><img alt="One-bedroom apartment for rent in Považská Bystrica: living room with leather sofas and TV in the evening" fetchpriority="high" height="1350" sizes="100vw" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg 1800w" width="1800"/></div>
 <div class="hero-in">
 <p class="eyebrow">For rent · Available now</p>
-<h1><span class="kicker">One-bedroom apartment for rent in Považská Bystrica</span> <span class="claim">The space of a two-bedroom.</span></h1>
+<h1><span class="kicker">One-bedroom apartment for rent in Považská Bystrica</span> <span class="claim">Two-bedroom space.</span></h1>
 <p class="sub">The new Panoráma Rozkvet residence, a five-minute walk from the town centre. Furnished, with a terrace, a balcony and a garage space included.</p>
 <div class="cta-row">
 <a class="btn lux" href="#kontakt">Book a viewing</a>
