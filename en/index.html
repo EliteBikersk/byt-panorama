@@ -152,7 +152,7 @@
   --glow:#F0C27D;      /* teplé LED svetlo, iba na tmavom */
   --hero:#0E1319;      /* podklad úvodu a pásu s domom */
   --card:transparent; --card-pad:0px;
-  --band-edge:transparent; --band-glow:transparent;
+  --band-edge:transparent; --band-glow:transparent; --night-card:transparent;
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --body:"Archivo","Helvetica Neue",Arial,sans-serif;
 }
@@ -160,14 +160,14 @@
   :root:not([data-theme="light"]){
     --bg:#191D22; --paper:#ECEDEA; --ink:#ECEDEA; --muted:#AEB3AF; --line:#353C44;
     --oak:#C98D52; --oak-ink:#DBA36C; --night:#1F2C42; --night-ink:#F1ECE2; --night-muted:#C3C6CC; --glow:#F0C27D;
-    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09);
+    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#191D22; --paper:#ECEDEA; --ink:#ECEDEA; --muted:#AEB3AF; --line:#353C44;
   --oak:#C98D52; --oak-ink:#DBA36C; --night:#1F2C42; --night-ink:#F1ECE2; --night-muted:#C3C6CC; --glow:#F0C27D;
-    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09);
+    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -598,6 +598,25 @@ section{scroll-margin-top:64px}
   .person{padding-top:min(var(--card-pad),20px);padding-bottom:min(var(--card-pad),20px)}
 }
 
+/* Kontakt a pätička v tmavom páse */
+.finale section{padding-top:0}
+.finale .inner{padding-bottom:0}
+.night .person .tag{color:var(--glow)}
+.night .contact .note,.night .person .note{color:var(--night-muted)}
+.night .line{border-bottom-color:rgba(236,231,221,.14)}
+.night .person .line:first-of-type{border-top-color:rgba(236,231,221,.5)}
+.night .line .k{color:var(--night-muted)}
+.night .line .v:hover{color:var(--glow)}
+.night .copy{border-color:rgba(236,231,221,.25);color:var(--night-muted)}
+.night .copy:hover{border-color:var(--glow);color:var(--glow)}
+.night .person{background:var(--night-card)}
+.finale footer{border-top-color:rgba(236,231,221,.14);color:var(--night-muted)}
+
+/* E-mail v kontakte vždy na jeden riadok */
+.line{grid-template-columns:5.5rem minmax(0,1fr) auto}
+.line .v[href^="mailto:"]{font-size:1.02rem;font-stretch:100%;overflow-wrap:normal;word-break:normal}
+@media (max-width:480px){.line{grid-template-columns:minmax(0,1fr)}}
+
 .langs a{display:inline-flex;align-items:center;min-height:34px;padding:0 9px;border:1px solid transparent;border-radius:3px;color:var(--muted);font:600 .85rem var(--body);text-decoration:none}
 .langs a.cur{color:var(--ink);border-color:var(--ink)}
 @media (max-width:400px){.langs a{padding:0 6px}}
@@ -928,7 +947,10 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </dl>
 </div>
 </section>
+</div>
 <!-- Kontakt -->
+<div class="night bleed finale">
+<div class="inner">
 <section aria-labelledby="h-kontakt" id="kontakt">
 <div class="sec-head">
 <p class="eyebrow"><span class="num">08</span>Contact</p>
@@ -954,6 +976,7 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 <p>Private listing by the owner: one-bedroom apartment for rent, unit A1.2, Panoráma Rozkvet, Považská Bystrica, Slovakia. Photos show the actual apartment.</p>
 <p>Floor plan and building details: developer VK-SOK's project documentation and website.</p>
 </footer>
+</div>
 </div>
 </main>
 <div class="dock" id="dock">
