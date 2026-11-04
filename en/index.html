@@ -523,30 +523,14 @@ section{scroll-margin-top:64px}
 <a class="btn line" href="#miestnosti">See the photos</a>
 </div>
 <ul class="facts">
-<li><b>€910</b><small>per month + utilities</small></li>
 <li><b>86 m²</b><small>with terrace and balcony</small></li>
 <li><b>11 m²</b><small>covered terrace</small></li>
 <li><b>Garage</b><small>included in the rent</small></li>
+<li><b>€910</b><small>per month + utilities</small></li>
 </ul>
 </div>
 </div>
 <div class="wrap">
-<section aria-labelledby="h-byt" class="intro" id="byt">
-<div>
-<p class="eyebrow"><span class="num">A1.2</span>First floor, block A</p>
-<h2 id="h-byt">Furnished, with a terrace and a garage space included</h2>
-<p class="lead">73 m² inside plus 13 m² of terrace and balcony. The kitchen and living room form an 8.6-metre living area with windows on two sides, and the bedroom with its balcony sits apart, off the hallway. Fully furnished and available now.</p>
-</div>
-<dl aria-label="Key facts" class="stamp">
-<div class="wide"><dt>Rent</dt><dd>€910 <small>per month, utilities approx. €150</small></dd></div>
-<div><dt>Rooms</dt><dd>1 bedroom</dd></div>
-<div><dt>Total area</dt><dd>86.47 m²</dd></div>
-<div><dt>Interior</dt><dd>73.16 m²</dd></div>
-<div><dt>Terrace and balcony</dt><dd>13.31 m²</dd></div>
-<div><dt>Floor</dt><dd>1st floor</dd></div>
-<div><dt>Parking</dt><dd>Garage incl.</dd></div>
-</dl>
-</section>
 <!-- Miestnosti -->
 <section aria-labelledby="h-miestnosti" id="miestnosti">
 <div class="sec-head">
@@ -623,6 +607,22 @@ section{scroll-margin-top:64px}
 <button data-en="Entrance hall with custom built-in wardrobes" data-sk="Zádverie so vstavanými skriňami na mieru" type="button"><img alt="Entrance hall with custom oak built-in wardrobes, Panoráma Rozkvet apartment, Považská Bystrica" height="1350" loading="lazy" sizes="(max-width: 860px) 100vw, 740px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg 1800w" width="1800"/></button>
 </div>
 </article>
+</section>
+<section aria-labelledby="h-byt" class="intro" id="byt">
+<div>
+<p class="eyebrow"><span class="num">A1.2</span>First floor, block A</p>
+<h2 id="h-byt">Furnished, with a terrace and a garage space included</h2>
+<p class="lead">73 m² inside plus 13 m² of terrace and balcony. The kitchen and living room form an 8.6-metre living area with windows on two sides, and the bedroom with its balcony sits apart, off the hallway. Fully furnished and available now.</p>
+</div>
+<dl aria-label="Key facts" class="stamp">
+<div class="wide"><dt>Rent</dt><dd>€910 <small>per month, utilities approx. €150</small></dd></div>
+<div><dt>Rooms</dt><dd>1 bedroom</dd></div>
+<div><dt>Total area</dt><dd>86.47 m²</dd></div>
+<div><dt>Interior</dt><dd>73.16 m²</dd></div>
+<div><dt>Terrace and balcony</dt><dd>13.31 m²</dd></div>
+<div><dt>Floor</dt><dd>1st floor</dd></div>
+<div><dt>Parking</dt><dd>Garage incl.</dd></div>
+</dl>
 </section>
 </div>
 <!-- Vybavenie -->
@@ -925,10 +925,11 @@ document.addEventListener("keydown",function(e){
 
 /* Lišta nad fotkou a mobilná lišta s kontaktom */
 (function(){
-  var hdr=document.querySelector("header.top"),hero=document.querySelector(".hero"),dock=document.getElementById("dock"),kon=document.getElementById("kontakt"),tick=false;
+  var hdr=document.querySelector("header.top"),hero=document.querySelector(".hero"),txt=document.querySelector(".hero-in>*"),dock=document.getElementById("dock"),kon=document.getElementById("kontakt"),tick=false;
   function upd(){
     var hb=hero?hero.getBoundingClientRect().bottom:0;
-    if(hdr)hdr.classList.toggle("over",hb>72);
+    var hh=hdr?hdr.offsetHeight:64,tt=txt?txt.getBoundingClientRect().top:0;
+    if(hdr)hdr.classList.toggle("over",hb>hh&&tt>hh+8);
     if(dock){var kt=kon?kon.getBoundingClientRect().top:1e9;dock.classList.toggle("show",hb<0&&kt>window.innerHeight*.85)}
   }
   window.addEventListener("scroll",function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;upd()})}},{passive:true});
