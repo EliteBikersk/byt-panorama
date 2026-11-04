@@ -133,79 +133,7 @@
   }
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "inLanguage": "en",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much is the rent and what does it include?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The rent is €910 per month. Utilities are paid by usage, roughly €150 per month. An underground garage space is included in the rent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the apartment furnished?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, fully. An Italian leather 3+2+1 sofa set, a 75″ TV, a kitchen with Bosch appliances, an island and dining table, a washer and dryer, and built-in wardrobes in the hall and bedroom."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can a company sign the lease?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. We can sign the lease directly with your company and, if you prefer, invoice one sum including utilities. We also communicate in English."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When can I move in and for how long?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The apartment is available now. The lease term is by agreement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much is the deposit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The deposit is two months' rent, refunded when you hand the apartment back."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there parking?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. An underground garage space is included in the rent, and the lift takes you from the garage straight to your floor. A second outdoor space is available for €40 per month."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far is the town centre and the big employers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The centre of Považská Bystrica is a five-minute walk away. Danfoss and thyssenkrupp rothe erde are a few minutes by car, Continental in Púchov about 15 to 20 minutes and Dubnica nad Váhom about 25 minutes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I arrange a viewing at the weekend?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Arrange a no-obligation viewing with Martin on +421 907 963 071 on any day, weekends included, in person or by video call."
-      }
-    }
-  ]
-}
-</script>
+
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: úvodná večerná fotka cez celú obrazovku s veľkým nadpisom a kľúčovými údajmi.
    Potom byt v skratke s pečiatkou výkresu, fotky po miestnostiach, vybavenie v tmavom páse,
@@ -616,21 +544,6 @@ section{scroll-margin-top:64px}
 .person{background:var(--card);padding:var(--card-pad);border-radius:6px}
 .terms dl{background:var(--card);padding:0 var(--card-pad);border-radius:6px}
 
-/* Časté otázky */
-.faq{max-width:860px;border-top:1.5px solid var(--ink)}
-.qa{border-bottom:1px solid var(--line)}
-.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;
-  font-family:var(--display);font-stretch:108%;font-weight:600;font-size:clamp(1.02rem,1.5vw,1.14rem);line-height:1.35}
-.qa summary::-webkit-details-marker{display:none}
-.qa summary::after{content:"";flex:0 0 14px;height:14px;
-  background:linear-gradient(var(--oak),var(--oak)) center/14px 1.6px no-repeat,linear-gradient(var(--oak),var(--oak)) center/1.6px 14px no-repeat;
-  transition:transform .35s cubic-bezier(.16,1,.3,1)}
-.qa[open] summary::after{transform:rotate(45deg)}
-.qa summary:hover{color:var(--oak-ink)}
-.qa p{margin:0 0 20px;max-width:68ch;color:var(--muted)}
-@media (prefers-reduced-motion:no-preference){.qa[open] p{animation:qaIn .45s cubic-bezier(.16,1,.3,1)}}
-@keyframes qaIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-
 /* Animácie pre exkluzívny dojem (len ak ich zariadenie nemá vypnuté) */
 @media (prefers-reduced-motion:no-preference){
   /* ikony vybavenia sa nakreslia ako čiary vo výkrese (animuje sa len pri odhalení, skrytie je okamžité) */
@@ -733,7 +646,7 @@ section{scroll-margin-top:64px}
 <section aria-labelledby="h-miestnosti" id="miestnosti">
 <div class="sec-head">
 <p class="eyebrow"><span class="num">01</span>Interior</p>
-<h2 id="h-miestnosti">Photos, room by room</h2>
+<h2 id="h-miestnosti">Apartment photos, room by room</h2>
 <p>Every photo shows the actual apartment, by day and by night. Click to enlarge.</p>
 </div>
 <article class="room" id="m-06">
@@ -881,7 +794,7 @@ section{scroll-margin-top:64px}
 <div class="plan-grid">
 <div class="plan-head">
 <p class="eyebrow"><span class="num">03</span>Layout</p>
-<h2 id="h-podorys">Floor plan</h2>
+<h2 id="h-podorys">Apartment floor plan</h2>
 <p>The open-plan living and kitchen area is 8.6 metres long with windows on two sides. The bedroom and its balcony are separated from the living area by the hallway. Click a room on the plan to see its photos.</p>
 </div>
 <div class="sheet">
@@ -1015,51 +928,10 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </dl>
 </div>
 </section>
-<!-- Časté otázky -->
-<section aria-labelledby="h-otazky" id="otazky">
-<div class="sec-head">
-<p class="eyebrow"><span class="num">08</span>Questions</p>
-<h2 id="h-otazky">Questions about renting the apartment</h2>
-</div>
-<div class="faq">
-<details class="qa">
-<summary>How much is the rent and what does it include?</summary>
-<p>The rent is €910 per month. Utilities are paid by usage, roughly €150 per month. An underground garage space is included in the rent.</p>
-</details>
-<details class="qa">
-<summary>Is the apartment furnished?</summary>
-<p>Yes, fully. An Italian leather 3+2+1 sofa set, a 75″ TV, a kitchen with Bosch appliances, an island and dining table, a washer and dryer, and built-in wardrobes in the hall and bedroom.</p>
-</details>
-<details class="qa">
-<summary>Can a company sign the lease?</summary>
-<p>Yes. We can sign the lease directly with your company and, if you prefer, invoice one sum including utilities. We also communicate in English.</p>
-</details>
-<details class="qa">
-<summary>When can I move in and for how long?</summary>
-<p>The apartment is available now. The lease term is by agreement.</p>
-</details>
-<details class="qa">
-<summary>How much is the deposit?</summary>
-<p>The deposit is two months' rent, refunded when you hand the apartment back.</p>
-</details>
-<details class="qa">
-<summary>Is there parking?</summary>
-<p>Yes. An underground garage space is included in the rent, and the lift takes you from the garage straight to your floor. A second outdoor space is available for €40 per month.</p>
-</details>
-<details class="qa">
-<summary>How far is the town centre and the big employers?</summary>
-<p>The centre of Považská Bystrica is a five-minute walk away. Danfoss and thyssenkrupp rothe erde are a few minutes by car, Continental in Púchov about 15 to 20 minutes and Dubnica nad Váhom about 25 minutes.</p>
-</details>
-<details class="qa">
-<summary>Can I arrange a viewing at the weekend?</summary>
-<p>Yes. Arrange a no-obligation viewing with Martin on +421 907 963 071 on any day, weekends included, in person or by video call.</p>
-</details>
-</div>
-</section>
 <!-- Kontakt -->
 <section aria-labelledby="h-kontakt" id="kontakt">
 <div class="sec-head">
-<p class="eyebrow"><span class="num">09</span>Contact</p>
+<p class="eyebrow"><span class="num">08</span>Contact</p>
 <h2 id="h-kontakt">Viewings and contact</h2>
 </div>
 <div class="contact two">
@@ -1086,7 +958,7 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </main>
 <div class="dock" id="dock">
 <a class="btn primary" href="tel:+421907963071">Call</a>
-<a class="btn ghost" href="sms:+421907963071">Send a text</a>
+<a class="btn ghost" href="mailto:martinmarkovicing@gmail.com">Email</a>
 </div>
 <div aria-label="Photos" aria-modal="true" class="lb" hidden="" id="lb" role="dialog">
 <button aria-label="Close" class="x" id="lb-x" type="button">✕</button>
@@ -1166,6 +1038,28 @@ document.addEventListener("keydown",function(e){
   if(e.key==="ArrowRight")show(cur+1);
 });
 
+/* Po načítaní alebo obnovení vždy začať úplne hore (prehliadač si inak pamätá pozíciu alebo #kotvu) */
+(function(){
+  try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}
+  var h=(location.hash||"").slice(1);
+  if(h&&h!=="en"&&h!=="sk"){try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}}
+  function top(){window.scrollTo({top:0,left:0,behavior:"instant"})}
+  top();
+  window.addEventListener("load",top);
+  window.addEventListener("pageshow",function(e){if(e.persisted)top()});
+  /* Odkazy v menu posunú stránku plynulo, ale nezmenia adresu, takže obnovenie začne hore */
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a)return;
+    var id=a.getAttribute("href").slice(1);
+    if(!id||id==="en"||id==="sk")return;
+    var t=id==="uvod"?document.body:document.getElementById(id);
+    if(!t)return;
+    e.preventDefault();
+    if(id==="uvod")window.scrollTo({top:0,behavior:"smooth"});else t.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+})();
+
 /* Lišta nad fotkou a mobilná lišta s kontaktom */
 (function(){
   var hdr=document.querySelector("header.top"),hero=document.querySelector(".hero"),kids=[].slice.call(document.querySelectorAll(".hero-in>*")),dock=document.getElementById("dock"),kon=document.getElementById("kontakt"),tick=false;
@@ -1184,7 +1078,7 @@ document.addEventListener("keydown",function(e){
 /* Objavovanie blokov pri rolovaní */
 if("IntersectionObserver" in window && !(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -6% 0px"});
-  document.querySelectorAll(".intro>*,.sec-head,.plan-head,.room,.eq-group,.sheet,.plan-body,.house>*,.night .three>div,.terms,.faq,.contact>*").forEach(function(el){el.classList.add("rv");io.observe(el)});
+  document.querySelectorAll(".intro>*,.sec-head,.plan-head,.room,.eq-group,.sheet,.plan-body,.house>*,.night .three>div,.terms,.contact>*").forEach(function(el){el.classList.add("rv");io.observe(el)});
 }
 
 /* Kopírovanie kontaktu */
