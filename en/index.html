@@ -240,6 +240,16 @@ nav.links a:hover{color:var(--ink)}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
 }
 @media (max-width:379px){.hero .cta-row{flex-wrap:wrap}.hero .cta-row .btn{flex:1 1 100%}}
+/* Počítač a tablet: fotka cez celú obrazovku, menší text vľavo dole, stmavenie len pod textom */
+@media (min-width:641px){
+  .hero::before{background:linear-gradient(90deg,rgba(9,12,17,.72) 0%,rgba(9,12,17,.38) 30%,rgba(9,12,17,0) 52%),
+    linear-gradient(180deg,rgba(9,12,17,.45) 0%,rgba(9,12,17,0) 16%,rgba(9,12,17,0) 62%,rgba(9,12,17,.8) 100%)}
+  .hero .claim{font-size:clamp(2.4rem,4.4vw,4.2rem);max-width:none}
+  .hero .kicker{font-size:1.05rem}
+  .hero .sub{max-width:40ch;font-size:1.02rem}
+  .hero .eyebrow,.hero h1,.hero .sub,.hero .cta-row{max-width:600px}
+  .facts{margin-top:40px}
+}
 @media (orientation:landscape) and (max-height:560px){.hero-in{padding-top:84px}.hero .claim{font-size:clamp(2.2rem,7vw,3.6rem)}.facts{margin-top:20px}}
 @media (prefers-reduced-motion:no-preference){
   .hero-bg img{animation:kb 18s cubic-bezier(.2,.6,.2,1) both}
@@ -267,8 +277,8 @@ nav.links a:hover{color:var(--ink)}
 .btn.ghost:hover{border-color:var(--oak-ink);color:var(--oak-ink)}
 .btn.lux{background:var(--glow);color:#14181C}
 .btn.lux:hover{background:#fff;color:#14181C}
-.btn.line{border:1.5px solid rgba(255,255,255,.72);color:#fff}
-.btn.line:hover{border-color:#fff;background:rgba(255,255,255,.1);color:#fff}
+.btn.outline{border:1.5px solid rgba(255,255,255,.72);color:#fff}
+.btn.outline:hover{border-color:#fff;background:rgba(255,255,255,.1);color:#fff}
 @media (max-width:400px){.cta-row .btn{flex:1 1 100%}}
 @media (min-width:641px){.btn{white-space:nowrap}}
 
@@ -471,6 +481,13 @@ footer p{margin:0 0 6px;max-width:90ch}
 section{scroll-margin-top:64px}
 .night .inner h2{font-size:clamp(1.8rem,3.8vw,3rem)}
 
+/* Kontakt: obhliadky a zmluva vedľa seba */
+.contact.two{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 56px}
+@media (max-width:860px){.contact.two{grid-template-columns:1fr}}
+.person .tag{margin:0 0 6px;font-size:.76rem;font-weight:650;letter-spacing:.14em;text-transform:uppercase;color:var(--oak-ink)}
+.person .note{margin:8px 0 18px}
+.person .line:first-of-type{border-top:1.5px solid var(--ink)}
+
 /* Kontakt na úzkom displeji: e-mail sa zmestí na jeden riadok */
 @media (max-width:480px){.line .v{font-size:1rem;font-stretch:100%}.copy{padding:0 9px;font-size:.78rem}}
 
@@ -520,7 +537,7 @@ section{scroll-margin-top:64px}
 <p class="sub">The new Panoráma Rozkvet residence, a five-minute walk from the town centre. Furnished, with a terrace, a balcony and a garage space included.</p>
 <div class="cta-row">
 <a class="btn lux" href="#kontakt">Book a viewing</a>
-<a class="btn line" href="#miestnosti">See the photos</a>
+<a class="btn outline" href="#miestnosti">See the photos</a>
 </div>
 <ul class="facts">
 <li><b>86 m²</b><small>with terrace and balcony</small></li>
@@ -823,15 +840,19 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 <p class="eyebrow"><span class="num">08</span>Contact</p>
 <h2 id="h-kontakt">Viewings and contact</h2>
 </div>
-<div class="contact">
-<div>
+<div class="contact two">
+<div class="person">
+<p class="tag">Viewings</p>
 <p class="who">Martin</p>
-<p class="role">Owner</p>
-<p class="note">Call or write. Viewings in person or by video call, weekends included.</p>
-</div>
-<div>
-<div class="line"><span class="k">Phone</span><a class="v" href="tel:+421905555835" id="phone">+421 905 555 835</a><button class="copy" data-for="phone" type="button">Copy</button></div>
+<p class="note">Call or write to arrange a viewing in person or by video call, weekends included.</p>
+<div class="line"><span class="k">Phone</span><a class="v" href="tel:+421907963071" id="tel-obhliadka">+421 907 963 071</a><button class="copy" data-for="tel-obhliadka" type="button">Copy</button></div>
 <div class="line"><span class="k">E-mail</span><a class="v" href="mailto:martinmarkovicing@gmail.com" id="email">martinmarkovicing@gmail.com</a><button class="copy" data-for="email" type="button">Copy</button></div>
+</div>
+<div class="person">
+<p class="tag">Lease and terms</p>
+<p class="who">The owner</p>
+<p class="note">The lease agreement, corporate leases, move-in date and the other rental terms.</p>
+<div class="line"><span class="k">Phone</span><a class="v" href="tel:+421908196934" id="tel-majitel">+421 908 196 934</a><button class="copy" data-for="tel-majitel" type="button">Copy</button></div>
 </div>
 </div>
 </section>
@@ -842,7 +863,7 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </div>
 </main>
 <div class="dock" id="dock">
-<a class="btn primary" href="tel:+421905555835">Call</a>
+<a class="btn primary" href="tel:+421907963071">Call</a>
 <a class="btn ghost" href="mailto:martinmarkovicing@gmail.com">Email</a>
 </div>
 <div aria-label="Photos" aria-modal="true" class="lb" hidden="" id="lb" role="dialog">
