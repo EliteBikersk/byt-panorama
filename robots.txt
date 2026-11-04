@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elitebikersk.github.io/byt-panorama/sitemap.xml
