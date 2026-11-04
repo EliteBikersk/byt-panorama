@@ -1,6 +1,6 @@
 # Byt A1.2 na prenájom, novostavba Panoráma, Považská Bystrica
 
-Statická stránka prenájmu 2-izbového bytu (86,47 m²) v novostavbe Panoráma Rozkvet.
+Statická stránka prenájmu 2-izbového bytu (86,47 m²) v novostavbe Panoráma v Považskej Bystrici.
 
 - `index.html`: slovenská verzia
 - `en/index.html`: anglická verzia

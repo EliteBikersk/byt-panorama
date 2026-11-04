@@ -17,7 +17,7 @@
 <meta property="og:locale:alternate" content="sk_SK">
 <meta property="og:url" content="https://elitebikersk.github.io/byt-panorama/en/">
 <meta property="og:title" content="1-bedroom apartment for rent, 86 m², Panoráma, Považská Bystrica">
-<meta property="og:description" content="Furnished 73 m² apartment plus 13 m² terrace and balcony, garage included, €910/month plus utilities. Available now.">
+<meta property="og:description" content="Furnished 86 m² apartment with terrace and balcony, garage included, €910/month plus utilities. Available now.">
 <meta property="og:image" content="https://elitebikersk.github.io/byt-panorama/og-prenajom-byt-povazska-bystrica.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,8 +34,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Apartment",
-  "name": "1-bedroom apartment for rent, unit A1.2, Panoráma Rozkvet, Považská Bystrica",
-  "description": "Furnished one-bedroom apartment with 73.16 m² of interior space and a 13.31 m² terrace and balcony (86.47 m² in total) on the first floor of block A of the Panoráma Rozkvet residence in Považská Bystrica, Slovakia. Air conditioning, underfloor heating, heat-recovery ventilation, garage space included.",
+  "name": "1-bedroom apartment for rent, unit A1.2, Panoráma, Považská Bystrica",
+  "description": "Furnished 86.47 m² one-bedroom apartment, including terrace and balcony, on the first floor of block A of the Panoráma residence in Považská Bystrica, Slovakia. Air conditioning, underfloor heating, heat-recovery ventilation, garage space included.",
   "numberOfRooms": 2,
   "floorLevel": "1st floor",
   "floorSize": {
@@ -45,7 +45,7 @@
   },
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Novostavba Panoráma, sídlisko Rozkvet",
+    "streetAddress": "Novostavba Panoráma",
     "addressLocality": "Považská Bystrica",
     "postalCode": "017 01",
     "addressCountry": "SK"
@@ -122,10 +122,10 @@
   "numberOfBathroomsTotal": 1,
   "containedInPlace": {
     "@type": "ApartmentComplex",
-    "name": "Panoráma Rozkvet",
+    "name": "Panoráma",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Novostavba Panoráma, sídlisko Rozkvet",
+      "streetAddress": "Novostavba Panoráma",
       "addressLocality": "Považská Bystrica",
       "postalCode": "017 01",
       "addressCountry": "SK"
@@ -150,7 +150,7 @@
   --night-ink:#ECE7DD;
   --night-muted:#B4B3AE;
   --glow:#F0C27D;      /* teplé LED svetlo, iba na tmavom */
-  --hero:#0E1319;      /* podklad úvodu a pásu s domom */
+  --hero:#0E1319; --map-filter:none;      /* podklad úvodu a pásu s domom */
   --card:transparent; --card-pad:0px;
   --band-edge:transparent; --band-glow:transparent; --night-card:transparent;
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
@@ -160,14 +160,14 @@
   :root:not([data-theme="light"]){
     --bg:#191D22; --paper:#ECEDEA; --ink:#ECEDEA; --muted:#AEB3AF; --line:#353C44;
     --oak:#C98D52; --oak-ink:#DBA36C; --night:#1F2C42; --night-ink:#F1ECE2; --night-muted:#C3C6CC; --glow:#F0C27D;
-    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
+    --hero:#0A0D12; --map-filter:brightness(.86) saturate(.9); --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#191D22; --paper:#ECEDEA; --ink:#ECEDEA; --muted:#AEB3AF; --line:#353C44;
   --oak:#C98D52; --oak-ink:#DBA36C; --night:#1F2C42; --night-ink:#F1ECE2; --night-muted:#C3C6CC; --glow:#F0C27D;
-    --hero:#0A0D12; --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
+    --hero:#0A0D12; --map-filter:brightness(.86) saturate(.9); --card:#22272E; --card-pad:24px; --band-edge:rgba(240,194,125,.2); --band-glow:rgba(240,194,125,.09); --night-card:rgba(255,255,255,.05);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -299,6 +299,7 @@ nav.links a:hover{color:var(--ink)}
 @media (max-width:900px){.intro{grid-template-columns:1fr}}
 .intro h2{font-stretch:120%;font-weight:640;font-size:clamp(1.9rem,4vw,3.2rem);line-height:1.04;letter-spacing:-.015em;max-width:18ch}
 .intro .lead{font-size:clamp(1.06rem,1.4vw,1.22rem);color:var(--muted);margin:22px 0 0;max-width:50ch}
+.intro .lead+.lead{margin-top:14px}
 
 /* Tlačidlá */
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
@@ -339,6 +340,14 @@ section{padding-top:clamp(64px,9vw,112px)}
 .sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;margin-bottom:28px}
 .sec-head h2,.plan-head h2{font-stretch:118%;font-weight:620;font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.1;letter-spacing:-.008em}
 .sec-head p{margin:0;color:var(--muted);max-width:58ch;flex-basis:100%}
+/* Lokalita: text a mapa vedľa seba, na mobile mapa pod textom */
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px 56px;align-items:start}
+.loc .sec-head{margin-bottom:0}
+@media (max-width:900px){.loc{grid-template-columns:1fr}}
+.map{margin:0;position:relative;aspect-ratio:4/3;max-width:100%;background:var(--line);border:1px solid var(--line);overflow:hidden}
+@media (max-width:560px){.map{aspect-ratio:1/1}}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:var(--map-filter)}
+.map-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink);font-weight:600}
 
 /* Miestnosti */
 .room{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:18px 40px;padding-block:36px;border-top:1px solid var(--line);scroll-margin-top:72px}
@@ -411,6 +420,7 @@ button.solo{appearance:none;border:0;padding:0;background:var(--line);cursor:zoo
 .sum>div{padding:12px 12px 12px 0;min-width:0}
 .sum>div+div{padding-left:12px;border-left:1px solid var(--line)}
 .sum dt{font-size:.82rem;color:var(--muted)}
+.sum .tot dd{color:var(--oak-ink)}
 .sum dd{margin:2px 0 0;font-family:var(--display);font-stretch:112%;font-weight:600;font-size:1.2rem;font-variant-numeric:tabular-nums;white-space:nowrap}
 @media (max-width:380px){.sum dd{font-size:1.02rem}.sum>div+div{padding-left:8px}}
 details.rooms{margin-top:18px;border-bottom:1px solid var(--line)}
@@ -435,7 +445,7 @@ table.areas{width:100%;border-collapse:collapse;font-variant-numeric:tabular-num
 @media (max-width:900px){.house{grid-template-columns:1fr}}
 .house p{margin:0 0 14px;max-width:52ch}
 @media (max-width:900px){.house p{max-width:64ch}}
-.house .shots{grid-template-columns:repeat(3,minmax(0,1fr))}
+.house .shots{grid-template-columns:repeat(2,minmax(0,1fr))}
 .house .shots button{grid-column:span 1}
 .house .shots button:first-child{grid-column:1 / -1}
 
@@ -612,9 +622,8 @@ section{scroll-margin-top:64px}
 .night .person{background:var(--night-card)}
 .finale footer{border-top-color:rgba(236,231,221,.14);color:var(--night-muted)}
 
-/* E-mail v kontakte vždy na jeden riadok */
+/* Kontakt: riadky s kľúčom, hodnotou a kopírovaním */
 .line{grid-template-columns:5.5rem minmax(0,1fr) auto}
-.line .v[href^="mailto:"]{font-size:1.02rem;font-stretch:100%;overflow-wrap:normal;word-break:normal}
 @media (max-width:480px){.line{grid-template-columns:minmax(0,1fr)}}
 
 /* Obal pre moderné formáty fotiek nemení rozloženie */
@@ -655,8 +664,8 @@ picture{display:contents}
 <div class="hero-bg"><picture><source sizes="(max-width: 640px) 86vh, (max-aspect-ratio: 4/3) 134vh, 100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 640px) 86vh, (max-aspect-ratio: 4/3) 134vh, 100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2400.webp 2400w" type="image/webp"/><img alt="One-bedroom apartment for rent in Považská Bystrica: living room with leather sofas and TV in the evening" data-big="1" fetchpriority="high" height="1350" sizes="(max-width: 640px) 86vh, (max-aspect-ratio: 4/3) 134vh, 100vw" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg 1800w" width="1800"/></picture></div>
 <div class="hero-in">
 <p class="eyebrow">For rent · Available now</p>
-<h1><span class="kicker">1-bedroom apartment for rent in Považská Bystrica</span> <span class="claim">The size of a 3-bedroom.</span></h1>
-<p class="sub">The new Panoráma Rozkvet residence, a five-minute walk from the town centre. Furnished, with a terrace, a balcony and a garage space included.</p>
+<h1><span class="kicker">1-bedroom apartment for rent in Považská Bystrica</span> <span class="claim">The size of a 3-bedroom</span></h1>
+<p class="sub">The new Panoráma residence, a five-minute walk from the town centre. Furnished, with a terrace, a balcony and a garage space included.</p>
 <div class="glass">
 <ul class="facts">
 <li><b>86 m²</b><small>with terrace and balcony</small></li>
@@ -687,7 +696,7 @@ picture{display:contents}
 </div>
 <div class="shots">
 <button data-en="Living room in the evening" data-sk="Obývacia izba večer" type="button"><picture><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2400.webp 2400w" type="image/webp"/><img alt="Living room at night with indirect LED lighting, furnished apartment to rent in Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 860px) 100vw, 740px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer.jpg 1800w" width="1800"/></picture></button>
-<button data-en="Living room by day" data-sk="Obývacia izba cez deň" type="button"><picture><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-2400.webp 2400w" type="image/webp"/><img alt="30 m² living room by day, one-bedroom apartment for rent at Panoráma Rozkvet, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.jpg 1800w" width="1800"/></picture></button>
+<button data-en="Living room by day" data-sk="Obývacia izba cez deň" type="button"><picture><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-2400.webp 2400w" type="image/webp"/><img alt="30 m² living room by day, one-bedroom apartment for rent at Panoráma, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka.jpg 1800w" width="1800"/></picture></button>
 <button data-en="Living and dining area in the evening" data-sk="Obývacia izba s jedálenskou časťou večer" type="button"><picture><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-2400.webp 2400w" type="image/webp"/><img alt="Living and dining area in the evening, apartment for rent in the Panoráma new build, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-vecer-2.jpg 1800w" width="1800"/></picture></button>
 <button data-en="TV wall with a 75″ TV, kitchen behind" data-sk="TV stena s 75″ televízorom, v pozadí kuchyňa" type="button"><picture><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-2400.webp 2400w" type="image/webp"/><img alt="TV wall with a 75-inch TV and view into the kitchen, furnished flat for rent in Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-tv-stena.jpg 1800w" width="1800"/></picture></button>
 <button data-en="View from the living room window" data-sk="Výhľad z okna obývačky" type="button"><picture><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-2400.webp 2400w" type="image/webp"/><img alt="View from the living room window over the Panoráma grounds and greenery, flat to rent in Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 560px) 50vw, (max-width: 860px) 25vw, 190px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-obyvacka-okno.jpg 1800w" width="1800"/></picture></button>
@@ -745,19 +754,20 @@ picture{display:contents}
 <p class="desc">Wall-to-wall built-in wardrobes with a bench and LED lighting. Doors lead to the bathroom, the toilet and the living area.</p>
 </div>
 <div class="shots r43">
-<button data-en="Entrance hall with custom built-in wardrobes" data-sk="Zádverie so vstavanými skriňami na mieru" type="button"><picture><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-2400.webp 2400w" type="image/webp"/><img alt="Entrance hall with custom oak built-in wardrobes, Panoráma Rozkvet apartment, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 860px) 100vw, 740px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg 1800w" width="1800"/></picture></button>
+<button data-en="Entrance hall with custom built-in wardrobes" data-sk="Zádverie so vstavanými skriňami na mieru" type="button"><picture><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 860px) 100vw, 740px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-2400.webp 2400w" type="image/webp"/><img alt="Entrance hall with custom oak built-in wardrobes, Panoráma apartment, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 860px) 100vw, 740px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-predsien.jpg 1800w" width="1800"/></picture></button>
 </div>
 </article>
 </section>
-<section aria-labelledby="h-byt" class="intro" id="byt">
+<section aria-labelledby="h-garaz" class="intro" id="garaz">
 <div>
-<p class="eyebrow"><span class="num">A1.2</span>First floor, block A</p>
-<h2 id="h-byt">Furnished, with a terrace and a garage space included</h2>
-<p class="lead">73 m² inside plus 13 m² of terrace and balcony. The kitchen and living room form an 8.6-metre living area with windows on two sides, and the bedroom with its balcony sits apart, off the hallway. Fully furnished and available now.</p>
+<p class="eyebrow"><span class="num">−1</span>Underground garage</p>
+<h2 id="h-garaz">A private space in the underground garage, included in the rent</h2>
+<p class="lead">The apartment comes with its own space in the underground garage, reserved for you alone and included in the rent. You drive in with a key fob, the garage is under camera surveillance, and the lift takes you straight up to the apartment's floor. No scraping ice off the windscreen in winter, and your shopping stays dry.</p>
+<p class="lead">For a second car, a private outdoor space is available for €40 per month.</p>
 </div>
 <figure class="intro-photo">
-<button class="solo" data-en="Underground garage space, included in the rent" data-sk="Garážové státie v podzemnej garáži, v cene nájmu" type="button"><picture><source sizes="(max-width: 900px) 100vw, 520px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.avif 1800w" type="image/avif"/><source sizes="(max-width: 900px) 100vw, 520px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.webp 1800w" type="image/webp"/><img alt="Underground garage of the Panoráma Rozkvet residence, parking space included in the rent, Považská Bystrica" height="1200" loading="lazy" sizes="(max-width: 900px) 100vw, 520px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg 1800w" width="1800"/></picture></button>
-<figcaption>An underground garage space is included in the rent. The lift takes you from the garage straight up to your floor.</figcaption>
+<button class="solo" data-en="Private space in the underground garage, included in the rent" data-sk="Privátne garážové státie v podzemnej garáži, v cene nájmu" type="button"><picture><source sizes="(max-width: 900px) 100vw, 520px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.avif 1800w" type="image/avif"/><source sizes="(max-width: 900px) 100vw, 520px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.webp 1800w" type="image/webp"/><img alt="Underground garage of the Panoráma residence, parking space included in the rent, Považská Bystrica" height="1200" loading="lazy" sizes="(max-width: 900px) 100vw, 520px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg 1800w" width="1800"/></picture></button>
+<figcaption>The underground garage, with a lift straight up to your floor</figcaption>
 </figure>
 </section>
 </div>
@@ -824,7 +834,7 @@ picture{display:contents}
 </div>
 <div class="sheet">
 <div class="plan" id="plan">
-<img alt="Floor plan of one-bedroom apartment A1.2 for rent: 73 m² plus terrace and balcony, Považská Bystrica" height="1400" loading="lazy" src="../img/podorys-2-izbovy-byt-povazska-bystrica-panorama.png" width="1272"/>
+<img alt="Floor plan of one-bedroom apartment A1.2 for rent: 86 m² including terrace and balcony, Považská Bystrica" height="1400" loading="lazy" src="../img/podorys-2-izbovy-byt-povazska-bystrica-panorama.png" width="1272"/>
 <button aria-label="Entrance hall, 8.20 m²" class="pin" data-room="01" style="left:68.97%;top:81.86%" type="button"></button>
 <button aria-label="Toilet, 1.74 m²" class="pin" data-room="02" style="left:75.25%;top:76.26%" type="button"></button>
 <button aria-label="Bathroom, 5.44 m²" class="pin" data-room="03" style="left:75.30%;top:67.03%" type="button"></button>
@@ -837,9 +847,9 @@ picture{display:contents}
 </div>
 <div class="plan-body">
 <dl class="sum">
+<div class="tot"><dt>Total</dt><dd>86.47 m²</dd></div>
 <div><dt>Interior</dt><dd>73.16 m²</dd></div>
 <div><dt>Outdoor</dt><dd>13.31 m²</dd></div>
-<div><dt>Total</dt><dd>86.47 m²</dd></div>
 </dl>
 <details class="rooms" id="rooms-details">
 <summary>Area of each room</summary>
@@ -872,10 +882,10 @@ picture{display:contents}
 <!-- Dom -->
 <section aria-labelledby="h-dom" id="dom">
 <div class="estate bleed">
-<button class="solo" data-en="The Panoráma Rozkvet residence, developer's visualisation" data-sk="Novostavba Panoráma Rozkvet, vizualizácia developera" type="button"><picture><source sizes="100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.avif 1800w" type="image/avif"/><source sizes="100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.webp 1800w" type="image/webp"/><img alt="Panoráma Rozkvet new-build residence in Považská Bystrica, apartment blocks surrounded by greenery" height="1012" loading="lazy" sizes="100vw" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.jpg 1800w" width="1800"/></picture></button>
+<button class="solo" data-en="The Panoráma residence, developer's visualisation" data-sk="Novostavba Panoráma, vizualizácia developera" type="button"><picture><source sizes="100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.avif 1800w" type="image/avif"/><source sizes="100vw" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.webp 1800w" type="image/webp"/><img alt="Panoráma new-build residence in Považská Bystrica, apartment blocks surrounded by greenery" height="1012" loading="lazy" sizes="100vw" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-novostavba-panorama.jpg 1800w" width="1800"/></picture></button>
 <div class="estate-in">
 <p class="eyebrow"><span class="num">04</span>Building</p>
-<h2 id="h-dom">The Panoráma Rozkvet residence</h2>
+<h2 id="h-dom">The Panoráma residence</h2>
 <p>Gated grounds among greenery, only ten apartments in block A, and a lift from the underground garage up to your floor.</p>
 </div>
 <span class="estate-cap">Developer's visualisation</span>
@@ -885,28 +895,28 @@ picture{display:contents}
 <div>
 <p>The apartment is in block A, which has six storeys and only ten apartments. The grounds are gated: coded entry gate, video intercom and key fobs for the garage and lift. The underground garage is monitored, and the lift takes you straight up to your floor.</p>
 <p>The courtyard has lawns, a children's playground, outdoor workout equipment and seating under a pergola. Reserved spaces have EV chargers.</p>
-<p>The developer presents the project at <a href="https://panoramarozkvet.sk" rel="noopener" target="_blank">panoramarozkvet.sk</a> and in a <a href="https://www.youtube.com/watch?v=hGQDrirCBAM" rel="noopener" target="_blank">YouTube video</a> showing a different one-bedroom unit with a similar layout.</p>
+<p>The developer presents the project on <a href="https://panoramarozkvet.sk" rel="noopener" target="_blank">its website</a>.</p>
 </div>
 <div class="shots">
-<button data-en="Gated grounds with greenery and pergola" data-sk="Uzavretý areál so zeleňou a pergolou" type="button"><picture><source sizes="(max-width: 900px) 100vw, 660px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 900px) 100vw, 660px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-2400.webp 2400w" type="image/webp"/><img alt="Gated grounds of the Panoráma Rozkvet residence with lawns and pergola, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 900px) 100vw, 660px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.jpg 1800w" width="1800"/></picture></button>
+<button data-en="Gated grounds with greenery and pergola" data-sk="Uzavretý areál so zeleňou a pergolou" type="button"><picture><source sizes="(max-width: 900px) 100vw, 660px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 900px) 100vw, 660px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-2400.webp 2400w" type="image/webp"/><img alt="Gated grounds of the Panoráma residence with lawns and pergola, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 900px) 100vw, 660px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-areal-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-areal.jpg 1800w" width="1800"/></picture></button>
 <button data-en="Children's playground" data-sk="Detské ihrisko v areáli" type="button"><picture><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-2400.webp 2400w" type="image/webp"/><img alt="Children's playground in the gated Panoráma complex, family-friendly rental in Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 900px) 33vw, 220px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-detske-ihrisko.jpg 1800w" width="1800"/></picture></button>
-<button data-en="Outdoor workout area" data-sk="Workoutové náradie v areáli" type="button"><picture><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-2400.webp 2400w" type="image/webp"/><img alt="Outdoor workout area at the Panoráma Rozkvet residence, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 900px) 33vw, 220px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.jpg 1800w" width="1800"/></picture></button>
-<button data-en="Underground parking space, included in the rent" data-sk="Garážové státie v podzemnej garáži, v cene nájmu" type="button"><picture><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.avif 1800w" type="image/avif"/><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.webp 1800w" type="image/webp"/><img alt="Parking spaces in the underground garage of the Panoráma Rozkvet residence, Považská Bystrica" height="1200" loading="lazy" sizes="(max-width: 900px) 33vw, 220px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-podzemna-garaz.jpg 1800w" width="1800"/></picture></button>
+<button data-en="Outdoor workout area" data-sk="Workoutové náradie v areáli" type="button"><picture><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.avif 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-1200.avif 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.avif 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-2400.avif 2400w" type="image/avif"/><source sizes="(max-width: 900px) 33vw, 220px" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.webp 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-1200.webp 1200w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.webp 1800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-2400.webp 2400w" type="image/webp"/><img alt="Outdoor workout area at the Panoráma residence, Považská Bystrica" data-big="1" height="1350" loading="lazy" sizes="(max-width: 900px) 33vw, 220px" src="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.jpg" srcset="../img/prenajom-2-izbovy-byt-povazska-bystrica-workout-800.jpg 800w, ../img/prenajom-2-izbovy-byt-povazska-bystrica-workout.jpg 1800w" width="1800"/></picture></button>
 </div>
 </div>
 </div>
 </section>
 <div class="wrap">
 <!-- Lokalita -->
-<section aria-labelledby="h-lokalita" id="lokalita">
+<section aria-labelledby="h-lokalita" class="loc" id="lokalita">
 <div class="sec-head">
 <p class="eyebrow"><span class="num">05</span>Surroundings</p>
 <h2 id="h-lokalita">Location in Považská Bystrica</h2>
 <p>
 
-Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The town centre is a five-minute walk along a footpath, with shops, cafés and a primary school nearby. Danfoss and thyssenkrupp rothe erde are a few minutes by car, Continental in Púchov about 15 to 20 minutes, Dubnica nad Váhom about 25 minutes. <a href="https://www.google.com/maps/search/?api=1&amp;query=Panorama+Rozkvet+Pova%C5%BEsk%C3%A1+Bystrica" rel="noopener" target="_blank">Open in Google Maps</a>
+The Panoráma residence in Považská Bystrica, close to the town centre. Shops, cafés and a primary school are nearby. The industrial zone is a few minutes by car, Púchov 15 minutes and Žilina 20 minutes away. <a href="https://www.google.com/maps/search/?api=1&amp;query=Panorama+Rozkvet+Pova%C5%BEsk%C3%A1+Bystrica" rel="noopener" target="_blank">Open in Google Maps</a>
 </p>
 </div>
+<figure class="map"><iframe src="https://maps.google.com/maps?q=Panorama%20Rozkvet%20Pova%C5%BEsk%C3%A1%20Bystrica&amp;z=15&amp;hl=en&amp;output=embed" title="Map: location of the Panoráma residence in Považská Bystrica" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>
 </section>
 </div>
 <!-- Pre koho -->
@@ -916,16 +926,16 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 <h2 id="h-pre-koho">Who this apartment suits</h2>
 <div class="three">
 <div>
+<h3>Companies and their staff</h3>
+<p>We can sign the lease directly with your company, as one sum including utilities if you prefer, and communicate in English. More comfortable and cheaper than months in a hotel.</p>
+</div>
+<div>
 <h3>A couple or a single person</h3>
-<p>A big living area for cooking and guests, a quiet bedroom off the hallway and a terrace for evenings outside. Plenty of room to work from home.</p>
+<p>A big living area for cooking and guests, a quiet bedroom off the hallway and a terrace with a view of the town for evenings outside. Made for working from home.</p>
 </div>
 <div>
 <h3>A small family</h3>
-<p>A playground and lawns inside the car-free gated grounds, with school, shops and the town centre a few minutes' walk away.</p>
-</div>
-<div>
-<h3>Companies and their staff</h3>
-<p>We can sign the lease directly with your company, as one sum including utilities if you prefer, and communicate in English. More comfortable and cheaper than months in a hotel.</p>
+<p>A playground and lawns inside the safe, car-free gated grounds, with school, shops and the town centre a few minutes' walk away.</p>
 </div>
 </div>
 <div class="cta-row">
@@ -948,7 +958,7 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </dl>
 <dl>
 <div class="row"><dt>Availability</dt><dd>Now</dd></div>
-<div class="row"><dt>Parking</dt><dd>Garage space included<small>second outdoor space for €40 per month</small></dd></div>
+<div class="row"><dt>Parking</dt><dd>Garage space included<small>second private outdoor space for €40 per month</small></dd></div>
 <div class="row"><dt>Corporate lease</dt><dd>In the company's name<small>one sum incl. utilities by agreement</small></dd></div>
 </dl>
 </div>
@@ -968,18 +978,19 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 <p class="who">Martin</p>
 <p class="note">Call or text to arrange a no-obligation viewing on any day, weekends included, in person or by video call.</p>
 <div class="line"><span class="k">Phone</span><a class="v" href="tel:+421907963071" id="tel-obhliadka">+421 907 963 071</a><button class="copy" data-for="tel-obhliadka" type="button">Copy</button></div>
+<div class="line"><span class="k">SMS</span><a class="v" href="sms:+421907963071?&amp;body=Hello%2C%20I%27m%20interested%20in%20viewing%20apartment%20A1.2." id="sms-obhliadka">Send a text</a></div>
 </div>
 <div class="person">
 <p class="tag">Lease and terms</p>
 <p class="who">The owner</p>
-<p class="note">The lease agreement, corporate leases, move-in date and the other rental terms, by phone or email.</p>
+<p class="note">The lease agreement, corporate leases, move-in date and the other rental terms, by phone or text message.</p>
 <div class="line"><span class="k">Phone</span><a class="v" href="tel:+421905555835" id="tel-majitel">+421 905 555 835</a><button class="copy" data-for="tel-majitel" type="button">Copy</button></div>
-<div class="line"><span class="k">E-mail</span><a class="v" href="mailto:martinmarkovicing@gmail.com" id="email">martinmarkovicing@gmail.com</a><button class="copy" data-for="email" type="button">Copy</button></div>
+<div class="line"><span class="k">SMS</span><a class="v" href="sms:+421905555835" id="sms-majitel">Send a text</a></div>
 </div>
 </div>
 </section>
 <footer>
-<p>Private listing by the owner: one-bedroom apartment for rent, unit A1.2, Panoráma Rozkvet, Považská Bystrica, Slovakia. Photos show the actual apartment.</p>
+<p>Private listing by the owner: one-bedroom apartment for rent, unit A1.2, Panoráma residence, Považská Bystrica, Slovakia. Photos show the actual apartment.</p>
 <p>Floor plan and building details: developer VK-SOK's project documentation and website.</p>
 </footer>
 </div>
@@ -987,7 +998,7 @@ Panoráma residence, Rozkvet district, 017 01 Považská Bystrica, Slovakia. The
 </main>
 <div class="dock" id="dock">
 <a class="btn primary" href="tel:+421907963071">Call</a>
-<a class="btn ghost" href="mailto:martinmarkovicing@gmail.com">Email</a>
+<a class="btn ghost" href="sms:+421907963071?&amp;body=Hello%2C%20I%27m%20interested%20in%20viewing%20apartment%20A1.2.">Text</a>
 </div>
 <div aria-label="Photos" aria-modal="true" class="lb" hidden="" id="lb" role="dialog">
 <button aria-label="Close" class="x" id="lb-x" type="button">✕</button>
