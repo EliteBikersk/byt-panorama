@@ -341,11 +341,11 @@ section{padding-top:clamp(64px,9vw,112px)}
 .sec-head h2,.plan-head h2{font-stretch:118%;font-weight:620;font-size:clamp(1.55rem,3vw,2.3rem);line-height:1.1;letter-spacing:-.008em}
 .sec-head p{margin:0;color:var(--muted);max-width:58ch;flex-basis:100%}
 /* Lokalita: text a mapa vedľa seba, na mobile mapa pod textom */
-.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px 56px;align-items:start}
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:24px 56px;align-items:start}
 .loc .sec-head{margin-bottom:0}
 @media (max-width:900px){.loc{grid-template-columns:1fr}}
 .map{margin:0;position:relative;aspect-ratio:4/3;max-width:100%;background:var(--line);border:1px solid var(--line);overflow:hidden}
-@media (max-width:560px){.map{aspect-ratio:1/1}}
+@media (max-width:900px){.map{width:100%;max-width:520px;aspect-ratio:16/10}}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:var(--map-filter)}
 .map-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink);font-weight:600}
 
@@ -934,7 +934,7 @@ The Panoráma residence in Považská Bystrica, close to the town centre. Shops,
 <p>A big living area for cooking and guests, a quiet bedroom off the hallway and a terrace with a view of the town for evenings outside. Made for working from home.</p>
 </div>
 <div>
-<h3>A small family</h3>
+<h3>A family</h3>
 <p>A playground and lawns inside the safe, car-free gated grounds, with school, shops and the town centre a few minutes' walk away.</p>
 </div>
 </div>
