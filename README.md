@@ -7,4 +7,4 @@ Statická stránka prenájmu 2-izbového bytu (86,47 m²) v novostavbe Panoráma
 - `img/`: fotografie (plná veľkosť a mobilné verzie `-800.jpg`) a pôdorys
 - `sitemap.xml`, `robots.txt`: pre vyhľadávače
 
-Zverejnené cez GitHub Pages (vetva `main`, priečinok `/`).
+Zverejnené cez GitHub Pages (vetva `main`, priečinok `/`) na doméne https://prenajombytupb.sk/ (súbor `CNAME`, DNS vo Websupporte).
