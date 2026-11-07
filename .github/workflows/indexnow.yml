@@ -1,0 +1,15 @@
+name: Hlásenie zmien vyhľadávačom (IndexNow)
+on:
+  push:
+    branches: [main]
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Počkať, kým sa nová verzia zverejní
+        run: sleep 150
+      - name: Nahlásiť zmenené stránky
+        run: |
+          curl -sS -o /dev/null -w "IndexNow odpoveď: %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{"host":"prenajombytupb.sk","key":"7c3f9a1e5b2d48c6a0e4f81b9d2c6e73","keyLocation":"https://prenajombytupb.sk/7c3f9a1e5b2d48c6a0e4f81b9d2c6e73.txt","urlList":["https://prenajombytupb.sk/", "https://prenajombytupb.sk/en/", "https://prenajombytupb.sk/llms.txt"]}'
