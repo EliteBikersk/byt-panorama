@@ -4,7 +4,7 @@
    - Voľba platí 12 mesiacov a dá sa kedykoľvek zmeniť cez „Nastavenia cookies“ v päte stránky. */
 (function () {
   "use strict";
-  var TAG = "GTM-55SXMRX3";          // Google tag s vlastníctvom GA4 G-XSFMBY86GQ
+  var TAG = "GTM-55SXMRX3";
   var KEY = "cookie-suhlas";
   var VER = 1;
   var MAX_AGE = 365 * 24 * 3600 * 1000; // voľba platí 12 mesiacov
