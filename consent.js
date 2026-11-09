@@ -10,15 +10,15 @@
   var en = (root.lang || "").slice(0, 2) === "en";
 
   var T = en ? {
-    title: "Help me improve this listing?",
-    text: "I'm the owner of the apartment. Visitor statistics (Google Analytics cookies) show me which photos and details you find useful, so I can make the listing better. No ads, and I don't learn your name or contact details.",
+    title: "Cookie settings",
+    text: "This site uses Google Analytics cookies only for visitor statistics, not for ads.",
     more: "Cookie policy", href: "/en/cookies/",
     yes: "Accept", no: "Decline", set: "Settings", save: "Save choice",
     nec: "Necessary", necd: "remembers your cookie choice, always on",
     an: "Analytics", and: "Google Analytics: visits and what people view"
   } : {
-    title: "Pomôžete mi vylepšiť ponuku?",
-    text: "Som majiteľ bytu. Štatistika návštevnosti (cookies Google Analytics) mi ukáže, ktoré fotky a informácie vás zaujímajú, aby som ponuku vylepšil. Bez reklamy, vaše meno ani kontakt nezisťujem.",
+    title: "Nastavenia cookies",
+    text: "Tento web používa cookies Google Analytics len na štatistiku návštevnosti, nie na reklamu.",
     more: "Viac o cookies", href: "/cookies/",
     yes: "Prijať", no: "Odmietnuť", set: "Nastaviť", save: "Uložiť výber",
     nec: "Nevyhnutné", necd: "zapamätajú si vašu voľbu cookies, vždy zapnuté",
@@ -183,18 +183,18 @@
   }
 
   /* ---------- lišta ---------- */
-  var css = ".ck{position:fixed;z-index:60;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100vw - 32px));box-sizing:border-box;padding:18px 18px 16px;border:1px solid var(--line,#D6D9D5);border-radius:8px;background:var(--bg,#F3F4F2);color:var(--ink,#23272B);font:400 .9rem/1.5 var(--body,Arial,sans-serif);box-shadow:0 18px 50px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.08)}" +
-    ".ck[hidden]{display:none}.ck h2{margin:0 0 6px;font:650 1rem/1.3 var(--display,Arial,sans-serif);font-stretch:112%;letter-spacing:-.005em}.ck p{margin:0}" +
+  var css = ".ck{position:fixed;z-index:60;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(370px,calc(100vw - 32px));box-sizing:border-box;padding:14px 16px;border:1px solid var(--line,#D6D9D5);border-radius:8px;background:var(--bg,#F3F4F2);color:var(--ink,#23272B);font:400 .86rem/1.5 var(--body,Arial,sans-serif);box-shadow:0 14px 40px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.08)}" +
+    ".ck[hidden]{display:none}.ck h2{display:none;margin:0 0 6px;font:650 1rem/1.3 var(--display,Arial,sans-serif);font-stretch:112%;letter-spacing:-.005em}.ck p{margin:0}" +
     ".ck a{color:inherit;text-decoration:underline;text-decoration-color:var(--oak,#A4713F);text-decoration-thickness:1.5px;text-underline-offset:.2em}" +
     ".ck-set{margin:12px 0 0;padding:0;border:0;display:grid;gap:8px}.ck-set[hidden]{display:none}" +
     ".ck-row{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:10px 12px;border:1px solid var(--line,#D6D9D5);border-radius:6px;cursor:pointer}" +
     ".ck-row input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--oak,#A4713F)}.ck-row b{display:block;font-weight:650}.ck-row small{display:block;color:var(--muted,#5A5F5C);font-size:.82rem;line-height:1.4}" +
-    ".ck-b{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}" +
-    ".ck-b button{min-height:42px;padding:0 8px;border:1.5px solid var(--ink,#23272B);border-radius:3px;background:transparent;color:var(--ink,#23272B);font:600 .88rem var(--body,Arial,sans-serif);cursor:pointer;transition:background-color .2s ease,color .2s ease}" +
+    ".ck-b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.ck.sett .ck-b{grid-template-columns:repeat(3,minmax(0,1fr))}.ck.sett h2{display:block}" +
+    ".ck-b button{min-height:38px;padding:0 8px;border:1.5px solid var(--ink,#23272B);border-radius:3px;background:transparent;color:var(--ink,#23272B);font:600 .86rem var(--body,Arial,sans-serif);cursor:pointer;transition:background-color .2s ease,color .2s ease}" +
     ".ck-b button:hover{background:var(--ink,#23272B);color:var(--bg,#F3F4F2)}.ck-b button:focus-visible,.ck-row:focus-within{outline:2px solid var(--oak,#A4713F);outline-offset:2px}" +
-    ".ck.sett [data-ck=set]{display:none}.ck:not(.sett) [data-ck=save]{display:none}" +
+    ".ck:not(.sett) [data-ck=save]{display:none}" +
     ".ck-link{padding:0;border:0;background:none;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}" +
-    "@media (max-width:640px){.ck{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;padding:16px 14px 14px}}" +
+    "@media (max-width:640px){.ck{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;padding:14px}}" +
     "@media print{.ck{display:none}}";
 
   var box = null;
@@ -210,12 +210,11 @@
         '<label class="ck-row"><input type="checkbox" id="ck-an"><span><b>' + T.an + '</b><small>' + T.and + '</small></span></label>' +
       '</div>' +
       '<div class="ck-b"><button type="button" data-ck="yes">' + T.yes + '</button><button type="button" data-ck="no">' + T.no +
-      '</button><button type="button" data-ck="set">' + T.set + '</button><button type="button" data-ck="save">' + T.save + '</button></div>';
+      '</button><button type="button" data-ck="save">' + T.save + '</button></div>';
     doc.body.appendChild(box);
     box.addEventListener("click", function (e) {
       var b = e.target.closest && e.target.closest("[data-ck]"); if (!b) return;
       var k = b.getAttribute("data-ck");
-      if (k === "set") { box.classList.add("sett"); box.querySelector(".ck-set").hidden = false; box.querySelector("#ck-an").focus(); return; }
       var a = k === "yes" ? true : k === "no" ? false : box.querySelector("#ck-an").checked;
       write(a); if (a) grant(); else deny();
       hide();
