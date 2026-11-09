@@ -79,8 +79,11 @@
   function ev(name, p) { if (granted) gtag("event", name, p || {}); }
   function where(el) {
     if (el.closest("#dock")) return "spodna_lista";
+    if (el.closest(".ck")) return "lista_cookies";
     var s = el.closest("section[id]"); if (s) return s.id;
     if (el.closest(".hero")) return "uvod";
+    if (el.closest("header")) return "menu";
+    if (el.closest("footer")) return "pata";
     return "ina";
   }
   doc.addEventListener("click", function (e) {
@@ -91,6 +94,11 @@
       if (h.indexOf("tel:") === 0) ev("klik_telefon", { cislo: h.slice(4), miesto: where(a) });
       else if (h.indexOf("sms:") === 0) ev("klik_sms", { cislo: h.slice(4).split("?")[0], miesto: where(a) });
       else if (h.indexOf("mailto:") === 0) ev("klik_email", { miesto: where(a) });
+      else if (h.charAt(0) === "#" || a.hostname === location.hostname || a.classList.contains("btn")) {
+        // tlačidlá a odkazy na webe (Dohodnúť obhliadku, Fotky, menu, SK/EN, …)
+        var txt = (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60);
+        ev("klik_tlacidlo", { tlacidlo: txt || h, ciel: h.slice(0, 80), miesto: where(a) });
+      }
       return;
     }
     var c = t.closest(".copy");
@@ -101,14 +109,77 @@
 
   var watching = false;
   function watchSections() {
-    if (watching || !("IntersectionObserver" in window)) return;
+    if (watching) return;
     watching = true;
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (x) {
-        if (x.isIntersecting) { io.unobserve(x.target); ev("zobrazenie_sekcie", { sekcia: x.target.id }); }
+    var secs = [].slice.call(doc.querySelectorAll("main section[id]"));
+    if ("IntersectionObserver" in window) {
+      // sekcia sa počíta ako videná, až keď je na obrazovke aspoň 1 s (nie pri rýchlom prejdení)
+      var tm = {};
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (x) {
+          var el = x.target, id = el.id;
+          if (!x.isIntersecting) { clearTimeout(tm[id]); return; }
+          tm[id] = setTimeout(function () {
+            io.unobserve(el);
+            ev("zobrazenie_sekcie", { sekcia: id });
+            if (id === "kontakt") ev("dosiel_na_kontakt", { sekcia: "kontakt" });
+          }, 1000);
+        });
+      }, { threshold: 0.3 });
+      secs.forEach(function (s) { io.observe(s); });
+    }
+    timeInSections(secs);
+  }
+
+  /* Čas v jednotlivých sekciách: počíta sa sekcia v strede obrazovky, len keď je stránka
+     viditeľná a človek je aktívny (po 60 s bez pohybu sa čas nepočíta). Odošle sa pri odchode. */
+  function timeInSections(secs) {
+    var acc = {}, cur = null, since = 0, last = Date.now(), IDLE = 60000;
+    function current() {
+      var mid = window.innerHeight / 2;
+      for (var i = 0; i < secs.length; i++) {
+        var r = secs[i].getBoundingClientRect();
+        if (r.top <= mid && r.bottom > mid) return secs[i].id;
+      }
+      if (secs.length && secs[0].getBoundingClientRect().top > mid) return "uvod";
+      return "pata";
+    }
+    function stop() {
+      if (cur && since) {
+        var end = Math.min(Date.now(), last + IDLE);
+        if (end > since) acc[cur] = (acc[cur] || 0) + (end - since);
+      }
+      since = 0;
+    }
+    function start() {
+      if (doc.visibilityState !== "visible") return;
+      cur = current(); since = Date.now();
+    }
+    function check() {
+      if (doc.visibilityState !== "visible") return;
+      var now = Date.now();
+      if (now - last > IDLE) { stop(); last = now; start(); return; }
+      last = now;
+      var c = current();
+      if (c !== cur || !since) { stop(); cur = c; since = now; }
+    }
+    function flush() {
+      stop();
+      if (granted) Object.keys(acc).forEach(function (k) {
+        var s = Math.round(acc[k] / 1000);
+        if (s >= 1) gtag("event", "cas_v_sekcii", { sekcia: k, sekundy: s });
       });
-    }, { threshold: 0.3 });
-    [].forEach.call(doc.querySelectorAll("main section[id]"), function (s) { io.observe(s); });
+      acc = {};
+    }
+    var tick = false;
+    function onAct() { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; check(); }); } }
+    ["scroll", "resize"].forEach(function (n) { window.addEventListener(n, onAct, { passive: true }); });
+    ["pointerdown", "keydown", "touchstart", "mousemove", "wheel"].forEach(function (n) { doc.addEventListener(n, onAct, { passive: true }); });
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.visibilityState === "hidden") flush(); else { last = Date.now(); start(); }
+    });
+    window.addEventListener("pagehide", flush);
+    start();
   }
 
   /* ---------- lišta ---------- */
