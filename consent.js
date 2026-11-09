@@ -10,15 +10,15 @@
   var en = (root.lang || "").slice(0, 2) === "en";
 
   var T = en ? {
-    title: "Cookies",
-    text: "Analytics cookies (Google Analytics) help us see how many people view this listing and what interests them. They only run if you agree.",
+    title: "Help me improve this listing?",
+    text: "I'm the owner of the apartment. Visitor statistics (Google Analytics cookies) show me which photos and details you find useful, so I can make the listing better. No ads, and I don't learn your name or contact details.",
     more: "Cookie policy", href: "/en/cookies/",
     yes: "Accept", no: "Decline", set: "Settings", save: "Save choice",
     nec: "Necessary", necd: "remembers your cookie choice, always on",
     an: "Analytics", and: "Google Analytics: visits and what people view"
   } : {
-    title: "Cookies",
-    text: "Analytické cookies (Google Analytics) nám pomáhajú zistiť, koľko ľudí si ponuku pozerá a čo ich zaujíma. Spustia sa len s vaším súhlasom.",
+    title: "Pomôžete mi vylepšiť ponuku?",
+    text: "Som majiteľ bytu. Štatistika návštevnosti (cookies Google Analytics) mi ukáže, ktoré fotky a informácie vás zaujímajú, aby som ponuku vylepšil. Bez reklamy, vaše meno ani kontakt nezisťujem.",
     more: "Viac o cookies", href: "/cookies/",
     yes: "Prijať", no: "Odmietnuť", set: "Nastaviť", save: "Uložiť výber",
     nec: "Nevyhnutné", necd: "zapamätajú si vašu voľbu cookies, vždy zapnuté",
@@ -183,7 +183,7 @@
   }
 
   /* ---------- lišta ---------- */
-  var css = ".ck{position:fixed;z-index:60;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100vw - 32px));box-sizing:border-box;padding:18px 18px 16px;border:1px solid var(--line,#D6D9D5);border-radius:8px;background:var(--bg,#F3F4F2);color:var(--ink,#23272B);font:400 .9rem/1.5 var(--body,Arial,sans-serif);box-shadow:0 18px 50px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.08)}" +
+  var css = ".ck{position:fixed;z-index:60;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100vw - 32px));box-sizing:border-box;padding:18px 18px 16px;border:1px solid var(--line,#D6D9D5);border-radius:8px;background:var(--bg,#F3F4F2);color:var(--ink,#23272B);font:400 .9rem/1.5 var(--body,Arial,sans-serif);box-shadow:0 18px 50px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.08)}" +
     ".ck[hidden]{display:none}.ck h2{margin:0 0 6px;font:650 1rem/1.3 var(--display,Arial,sans-serif);font-stretch:112%;letter-spacing:-.005em}.ck p{margin:0}" +
     ".ck a{color:inherit;text-decoration:underline;text-decoration-color:var(--oak,#A4713F);text-decoration-thickness:1.5px;text-underline-offset:.2em}" +
     ".ck-set{margin:12px 0 0;padding:0;border:0;display:grid;gap:8px}.ck-set[hidden]{display:none}" +
@@ -202,7 +202,7 @@
     var st = doc.createElement("style"); st.textContent = css; doc.head.appendChild(st);
     box = doc.createElement("div");
     box.className = "ck"; box.hidden = true;
-    box.setAttribute("role", "region"); box.setAttribute("aria-label", T.title);
+    box.setAttribute("role", "region"); box.setAttribute("aria-label", "Cookies");
     box.innerHTML =
       '<h2>' + T.title + '</h2><p>' + T.text + ' <a href="' + T.href + '">' + T.more + '</a></p>' +
       '<div class="ck-set" hidden>' +
