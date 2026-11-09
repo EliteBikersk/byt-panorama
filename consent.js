@@ -6,14 +6,14 @@
   "use strict";
   var TAG = "GTM-55SXMRX3";
   var KEY = "cookie-suhlas";
-  var VER = 1;
+  var VER = 2;            // 2: lišta pokrýva aj mapu Google (staršie voľby sa pýtajú znova)
   var MAX_AGE = 365 * 24 * 3600 * 1000; // voľba platí 12 mesiacov
   var doc = document, root = doc.documentElement;
   var en = (root.lang || "").slice(0, 2) === "en";
 
   var T = en ? {
     title: "Cookie settings",
-    text: "This site uses Google Analytics cookies only for visitor statistics, not for ads.",
+    text: "This site uses Google Analytics cookies for visitor statistics and Google Maps for the map, not for ads.",
     more: "Cookie policy", href: "/en/cookies/", set: "Settings",
     yes: "Accept", no: "Decline", yesAll: "Accept all", noAll: "Decline all", save: "Save choice",
     nec: "Necessary", necd: "remembers your choice, always on",
@@ -23,7 +23,7 @@
     mapBtn: "Show map", mapNote: "Your choice is remembered, change it in Cookie settings."
   } : {
     title: "Nastavenia cookies",
-    text: "Tento web používa cookies Google Analytics len na štatistiku návštevnosti, nie na reklamu.",
+    text: "Tento web používa cookies Google Analytics na štatistiku návštevnosti a mapu Google, nie na reklamu.",
     more: "Viac o cookies", href: "/cookies/", set: "Nastavenia",
     yes: "Prijať", no: "Odmietnuť", yesAll: "Prijať všetko", noAll: "Odmietnuť všetko", save: "Uložiť výber",
     nec: "Nevyhnutné", necd: "zapamätajú si vašu voľbu, vždy zapnuté",
@@ -278,10 +278,9 @@
       var b = e.target.closest && e.target.closest("[data-ck]"); if (!b) return;
       var k = b.getAttribute("data-ck");
       if (k === "set") { show(true); box.querySelector("#ck-an").focus(); return; }
-      var sett = box.classList.contains("sett"), c;
+      var c;
       if (k === "save") c = { a: box.querySelector("#ck-an").checked, m: box.querySelector("#ck-mp").checked };
-      else if (sett) c = { a: k === "yes", m: k === "yes" };          // Prijať všetko / Odmietnuť všetko
-      else c = { a: k === "yes" };                                      // lišta: týka sa len Google Analytics
+      else c = { a: k === "yes", m: k === "yes" };                      // Prijať / Odmietnuť: štatistika aj mapa
       var was = granted, r = write(c);
       if (r.a) grant(); else deny();
       if (r.m) loadMaps(); else unloadMaps();
