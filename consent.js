@@ -152,6 +152,12 @@
     }
     var c = t.closest(".copy");
     if (c) { ev("kopirovanie_cisla", { co: c.getAttribute("data-for") || "" }); return; }
+    var q = t.closest("details.faq > summary");
+    if (q) {
+      // otvorenie otázky v Častých otázkach (zatvorenie sa nepočíta)
+      if (!q.parentNode.open) ev("klik_tlacidlo", { tlacidlo: (q.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60), ciel: "otazka", miesto: where(q) });
+      return;
+    }
     var f = t.closest(".shots button, button.solo");
     if (f) { var im = f.querySelector("img"); ev("otvorenie_fotky", { fotka: im ? (im.getAttribute("alt") || "").slice(0, 90) : "", miesto: where(f) }); }
   }, true);
