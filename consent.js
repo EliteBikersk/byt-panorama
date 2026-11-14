@@ -174,7 +174,7 @@
             if (id === "kontakt") ev("dosiel_na_kontakt", { sekcia: "kontakt" });
           }, 1000);
         });
-      }, { threshold: 0.3 });
+      }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
       secs.forEach(function (s) { io.observe(s); });
     }
     timeInSections(secs);
@@ -183,6 +183,7 @@
   /* Čas v jednotlivých sekciách: počíta sa sekcia v strede obrazovky, len keď je stránka
      viditeľná a človek je aktívny (po 60 s bez pohybu sa čas nepočíta). Odošle sa pri odchode. */
   function timeInSections(secs) {
+    if (!secs.length) return;                      // stránka bez sekcií (napr. Cookies): čas nemeriame
     var acc = {}, cur = null, since = 0, last = Date.now(), IDLE = 60000;
     function current() {
       var mid = window.innerHeight / 2;
