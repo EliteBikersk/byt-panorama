@@ -127,6 +127,7 @@
   /* ---------- udalosti na analýzu (len so súhlasom) ---------- */
   function ev(name, p) { if (granted) gtag("event", name, p || {}); }
   function where(el) {
+    if (el.closest("#lb")) return "galeria";
     if (el.closest("#dock")) return "spodna_lista";
     if (el.closest(".ck")) return "lista_cookies";
     var s = el.closest("section[id]"); if (s) return s.id;
